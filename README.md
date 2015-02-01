@@ -12,13 +12,16 @@
 * Pass your JSON Schema to `json-schema-form` attribute directive on `<form>` element
 
   ```
-    <form json-schema-form="{title: 'first-name', type: 'string'}" action="/" method="post">
+    <form
+      json-schema-form="{title: 'first-name', type: 'string'}"
+      action="/" method="post"
+    >
       <button type="submit">Send</button>
     </form>
   ```
   This will result to this HTML:
   ```
-    <form json-schema-form="{type: 'string'}" action="/" method="post">
+    <form action="/" method="post">
       <input type="text" name="first-name">
       <button type="submit">Send</button>
     </form>
