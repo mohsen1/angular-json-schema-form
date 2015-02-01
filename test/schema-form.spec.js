@@ -1,8 +1,10 @@
 'use strict';
 
-
-describe('schema-form', function () {
-  var scope, $compile, $rootScope, element;
+describe('schema-form', function() {
+  var scope;
+  var $compile;
+  var $rootScope;
+  var element;
 
   function createDirective(template) {
     var elm;
@@ -22,17 +24,24 @@ describe('schema-form', function () {
     $compile = _$compile_;
   }));
 
-  afterEach(function () {
-    if (element) element.remove();
+  afterEach(function() {
+    if (element) {
+      element.remove();
+    }
   });
 
-  describe('as an element', function(){ runTestsWithTemplate('<schema-form></schema-form>'); });
-  describe('as an attribute', function(){ runTestsWithTemplate('<div schema-form></div>'); });
+  describe('as an element', function() {
+    runTestsWithTemplate('<schema-form></schema-form>');
+  });
+
+  describe('as an attribute', function() {
+    runTestsWithTemplate('<div schema-form></div>');
+  });
 
   function runTestsWithTemplate(template) {
-    describe('when created', function () {
+    describe('when created', function() {
 
-      it('should initial the value to 0', function () {
+      it('should initial the value to 0', function() {
         element = createDirective(template);
 
         expect(element.text()).toContain('0');

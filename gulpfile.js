@@ -2,6 +2,7 @@
 
 /* jshint node:true */
 /* jshint browser:true */
+
 var fs            = require('fs');
 var del           = require('del');
 var gulp          = require('gulp');
@@ -22,7 +23,6 @@ var runSequence   = require('run-sequence');
 var es            = require('event-stream');
 var karma         = require('karma').server;
 
-
 var config = {
   pkg : JSON.parse(fs.readFileSync('./package.json')),
   banner:
@@ -41,12 +41,12 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('html', function () {
+gulp.task('html', function() {
   return gulp.src(['./demo/*.html', '.src/*.html'])
     .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   gulp.watch(['./demo/**/*.html'], ['html']);
   gulp.watch(['./src/*.less'], ['styles']);
   gulp.watch(['./src/*.js', './**/*.html'], ['scripts']);
@@ -68,7 +68,7 @@ gulp.task('scripts', ['clean'], function() {
       .pipe(templateCache({module: 'mohsen1.schema-form'}));
   }
 
-  function buildDistJS(){
+  function buildDistJS() {
     return gulp.src('src/schema-form.js')
       .pipe(plumber({errorHandler: handleError}))
       .pipe(jshint())
@@ -93,7 +93,6 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(connect.reload());
 });
 
-
 gulp.task('styles', ['clean'], function() {
 
   return gulp.src('src/schema-form.less')
@@ -108,23 +107,23 @@ gulp.task('styles', ['clean'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('open', function(){
+gulp.task('open', function() {
   return gulp.src('./demo/demo.html')
   .pipe(openBrowser('', {url: 'http://localhost:8080/demo/demo.html'}));
 });
 
-gulp.task('jshint-test', function(){
+gulp.task('jshint-test', function() {
   return gulp.src('./test/**/*.js').pipe(jshint());
 });
 
-gulp.task('karma', function (done) {
+gulp.task('karma', function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done);
 });
 
-gulp.task('karma-serve', function(done){
+gulp.task('karma-serve', function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js'
   }, done);
@@ -137,7 +136,7 @@ function handleError(err) {
 }
 
 gulp.task('build', ['scripts', 'styles']);
-gulp.task('serve', function (cb) {
+gulp.task('serve', function(cb) {
   runSequence('build', 'connect', 'watch', 'open', cb);
 });
 gulp.task('default', ['build', 'test']);
