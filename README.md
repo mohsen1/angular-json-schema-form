@@ -6,11 +6,11 @@
 
 * Install via bower
   ```
-  bower install --save-dev mohsen1.schema-form
+    bower install --save-dev mohsen1.schema-form
   ```
 * Include `mohsen1.schema-form` in you app
   ```
-     angular.module('myApp', ['mohsen1.schema-form'])
+    angular.module('myApp', ['mohsen1.schema-form'])
   ```
 * Pass your JSON Schema to `json-schema-form` attribute directive on `<form>` element
 
