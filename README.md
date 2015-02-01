@@ -5,10 +5,12 @@
 ## How to use
 
 * Install via bower
+  
   ```
     bower install --save-dev mohsen1.schema-form
   ```
 * Include `mohsen1.schema-form` in you app
+
   ```
     angular.module('myApp', ['mohsen1.schema-form'])
   ```
