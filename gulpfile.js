@@ -62,8 +62,6 @@ gulp.task('scripts', ['clean'], function() {
 
   function buildTemplates() {
     return gulp.src('src/**/*.html')
-      .pipe(jshint())
-      .pipe(jscs())
       .pipe(minifyHtml({
         empty: true,
         spare: true,
