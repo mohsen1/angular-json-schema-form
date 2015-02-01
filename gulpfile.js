@@ -19,6 +19,8 @@ var plumber       = require('gulp-plumber');
 var openBrowser   = require('gulp-open');
 var less          = require('gulp-less');
 var order         = require('gulp-order');
+var jshint        = require('gulp-jshint');
+var jscs          = require('gulp-jscs');
 var runSequence   = require('run-sequence');
 var es            = require('event-stream');
 var karma         = require('karma').server;
@@ -60,6 +62,8 @@ gulp.task('scripts', ['clean'], function() {
 
   function buildTemplates() {
     return gulp.src('src/**/*.html')
+      .pipe(jshint())
+      .pipe(jscs())
       .pipe(minifyHtml({
         empty: true,
         spare: true,
@@ -70,6 +74,8 @@ gulp.task('scripts', ['clean'], function() {
 
   function buildDistJS() {
     return gulp.src('src/schema-form.js')
+      .pipe(jshint())
+      .pipe(jscs())
       .pipe(plumber({errorHandler: handleError}))
       .pipe(jshint())
       .pipe(jshint.reporter('jshint-stylish'))
