@@ -16,6 +16,7 @@
   "sub": true,
   "undef": true,
   "indent": 2,
+  "browser": true,
   "globals": {
     "angular": true,
     "afterEach": false,

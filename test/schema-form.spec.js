@@ -1,5 +1,6 @@
 'use strict';
 
+
 describe('schema-form', function () {
   var scope, $compile, $rootScope, element;
 
@@ -7,7 +8,7 @@ describe('schema-form', function () {
     var elm;
 
     elm = angular.element(template);
-    angular.element(document.body).prepend(elm);
+    angular.element(window.document.body).prepend(elm);
     $compile(elm)(scope);
     scope.$digest();
 

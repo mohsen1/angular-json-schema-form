@@ -1,3 +1,7 @@
+'use strict';
+
+/* jshint node:true */
+/* jshint browser:true */
 var fs            = require('fs');
 var del           = require('del');
 var gulp          = require('gulp');
@@ -10,11 +14,10 @@ var uglify        = require('gulp-uglify');
 var minifyHtml    = require('gulp-minify-html');
 var minifyCSS     = require('gulp-minify-css');
 var templateCache = require('gulp-angular-templatecache');
-var gutil         = require('gulp-util');
 var plumber       = require('gulp-plumber');
-var open          = require('gulp-open');
+var openBrowser   = require('gulp-open');
 var less          = require('gulp-less');
-var order         = require("gulp-order");
+var order         = require('gulp-order');
 var runSequence   = require('run-sequence');
 var es            = require('event-stream');
 var karma         = require('karma').server;
@@ -63,7 +66,7 @@ gulp.task('scripts', ['clean'], function() {
         quotes: true
       }))
       .pipe(templateCache({module: 'mohsen1.schema-form'}));
-  };
+  }
 
   function buildDistJS(){
     return gulp.src('src/schema-form.js')
@@ -71,7 +74,7 @@ gulp.task('scripts', ['clean'], function() {
       .pipe(jshint())
       .pipe(jshint.reporter('jshint-stylish'))
       .pipe(jshint.reporter('fail'));
-  };
+  }
 
   return es.merge(buildDistJS(), buildTemplates())
     .pipe(plumber({errorHandler: handleError}))
@@ -107,12 +110,12 @@ gulp.task('styles', ['clean'], function() {
 
 gulp.task('open', function(){
   return gulp.src('./demo/demo.html')
-  .pipe(open('', {url: 'http://localhost:8080/demo/demo.html'}));
+  .pipe(openBrowser('', {url: 'http://localhost:8080/demo/demo.html'}));
 });
 
 gulp.task('jshint-test', function(){
   return gulp.src('./test/**/*.js').pipe(jshint());
-})
+});
 
 gulp.task('karma', function (done) {
   karma.start({
@@ -128,9 +131,10 @@ gulp.task('karma-serve', function(done){
 });
 
 function handleError(err) {
+  /*jshint validthis:true */
   console.log(err);
   this.emit('end');
-};
+}
 
 gulp.task('build', ['scripts', 'styles']);
 gulp.task('serve', function (cb) {

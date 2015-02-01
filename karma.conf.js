@@ -1,3 +1,7 @@
+'use strict';
+
+/*jshint node: true*/
+
 module.exports = function(config) {
   config.set({
 

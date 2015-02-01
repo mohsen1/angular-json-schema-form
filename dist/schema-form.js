@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.0.7 - 2015-02-01T08:06:20.823Z
+ * Version: 0.0.7 - 2015-02-01T08:07:42.525Z
  * License: MIT
  */
 
