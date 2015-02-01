@@ -44,7 +44,7 @@ var config = {
 */
 gulp.task('connect', function() {
   return connect.server({
-    root: '.',
+    // root: '.',
     livereload: true
   });
 });
