@@ -62,9 +62,9 @@ gulp.task('html', function() {
  * Watch each file category for changes and trigger tasks accordingly
 */
 gulp.task('watch', function() {
-  gulp.watch(['./demo/**/*.html'], ['html']);
-  gulp.watch(['./src/*.less'], ['styles']);
-  gulp.watch(['./src/*.js', './**/*.html'], ['scripts']);
+  gulp.watch(['./demo/**/*.html'], ['build']);
+  gulp.watch(['./src/*.less'], ['build']);
+  gulp.watch(['./src/*.js', './**/*.html'], ['build']);
 });
 
 /*
