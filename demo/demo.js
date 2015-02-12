@@ -1,3 +1,7 @@
 'use strict';
 
-var app = angular.module('demo', ['ngSanitize', 'mohsen1.schema-form']);
+angular.module('demo', ['ngSanitize', 'mohsen1.schema-form']);
+
+angular.module('demo').controller('TestCtrl', function ($scope) {
+  $scope.simpleString = '';
+});

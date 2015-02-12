@@ -5,9 +5,9 @@
     <title>AngularJS directive demo</title>
 
     <!-- TODO: Include Angular from Bower components -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 
     <link rel="stylesheet" href="../dist/schema-form.css">
     <link rel="stylesheet" href="demo.css">
@@ -18,10 +18,16 @@
 
       <div class="usage row">
         <h4>Simple usage</h4>
-        <p>This is a simple usage of mohsen1.schema-form</p>
-        <pre>&lt;schema-form&gt;&lt;/schema-form&gt;</pre>
+        <p>This is a simple usage of <code>mohsen1.schema-form</code></p>
+        <pre>
+&lt;form schema-form="{type: 'string', title: 'firstName' }" ng-model="simpleString"&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button>
+&lt;/form&gt;</pre>
         <h4>Results</h4>
-        <schema-form></schema-form>
+        <form schema-form="{type: 'string', title: 'firstName' }" ng-model="simpleString">
+            <button type="submit">Submit</button>
+        </form>
+        <p ng-if="simpleString">simpleString: {{simpleString}}</p>
       </div>
     </div>
 

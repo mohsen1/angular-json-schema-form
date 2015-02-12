@@ -1,7 +1,9 @@
 {
   "name": "schema-form",
   "version": "0.0.7",
-  "authors": ["Mohsen Azimi <me@azimi.me>"],
+  "authors": [
+    "Mohsen Azimi <me@azimi.me>"
+  ],
   "description": "",
   "main": "dist/schema-form.js, dist/schema-form.js",
   "license": "MIT",
@@ -17,6 +19,7 @@
     "jquery": "~2.1.1",
     "angular": "~1.2.26",
     "angular-sanitize": "~1.2.26",
-    "angular-mocks": "~1.2.26"
+    "angular-mocks": "~1.2.26",
+    "bootstrap": "~3.3.2"
   }
 }
