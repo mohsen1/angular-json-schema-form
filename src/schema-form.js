@@ -34,21 +34,27 @@ angular.module('mohsen1.schema-form', [])
       var options = angular.extend(SchemaForm.options, {schema: scope.schema});
       var jsonEditor = null;
 
-      ngModel.$render = function() {
+      element.prepend(formEl);
+
+      ngModel.$render = render;
+
+      function render() {
+        if (jsonEditor) {
+          angular.element(formEl).html('');
+          jsonEditor.destroy();
+        }
         jsonEditor = new JSONEditor(formEl, options);
-        element.prepend(formEl);
         jsonEditor.setValue(ngModel.$modelValue);
+        jsonEditor.on('change', setViewValue);
+      }
 
-        jsonEditor.on('change', function() {
-          scope.$evalAsync(function()   {
-            ngModel.$setViewValue(jsonEditor.getValue());
-          });
+      function setViewValue() {
+        scope.$evalAsync(function() {
+          ngModel.$setViewValue(jsonEditor.getValue());
         });
-      };
+      }
 
-      scope.$watch(attributes.schemaForm, function() {
-        window.console.log(arguments);
-      });
+      scope.$watch(attributes.schemaForm, render);
     }
   };
 })
