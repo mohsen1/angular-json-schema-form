@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.0.7 - 2015-02-12T20:04:39.958Z
+ * Version: 0.0.7 - 2015-02-21T05:04:11.957Z
  * License: MIT
  */
 
@@ -26,17 +26,9 @@
 angular.module('mohsen1.schema-form', [])
 
 /*
- * Define templates constant
-*/
-.constant('templates', {
-  string: '<input type="string" ng-model="ngModel"/>'
-  // string: 'templates/string.html'
-})
-
-/*
  * Main directive
 */
-.directive('schemaForm', function($compile, templates) {
+.directive('schemaForm', function(SchemaForm) {
 
   return {
     restrict: 'A',
@@ -45,67 +37,51 @@ angular.module('mohsen1.schema-form', [])
     scope: {
       'schema': '=schemaForm'
     },
-    link: function(scope, element, attributes, ngModel) {
+    link: function(scope, element, attributes/*, ngModel*/) {
+      var formEl = window.document.createElement('div');
+      var options = angular.extend(SchemaForm.options, {schema: scope.schema});
+      var jsonEditor = new JSONEditor(formEl, options);
 
-      if (!ngModel) {
-        return;
-      }
-      var schema = scope.schema;
-
-      if (!angular.isObject(schema)) {
-        throw new Error('schema-form expects a schema object.');
-      }
-
-      var type = getSchemaType(schema);
-
-      // JSON Schema §3.5
-      var validTypes = ['array', 'boolean', 'integer', 'number', 'null',
-        'object', 'string'];
-
-      if (validTypes.indexOf(type) === -1) {
-        throw new Error('Unknown JSON Schema type: ' + type);
-      }
-
-      ngModel.$render = function() {
-        element.prepend(templates[type]);
-        // $compile($element.contents())(scope);
-      };
-
+      element.prepend(formEl);
+      jsonEditor.on('change', function() {
+        window.console.log('change:', arguments);
+      });
+      scope.$watch(attributes.schemaForm, function() {
+        window.console.log(arguments);
+      });
     }
   };
-
-  /*
-   * Gets type of a schema object
-   * @param {object} - JSON Schema object
-   * @returns {string} - Type of JSON Schema
-  */
-  function getSchemaType(schema) {
-
-    if (!angular.isObject(schema)) {
-      throw new Error('getSchemaType expects a schema object.');
-    }
-
-    // only return schema.type if it's a string
-    if (angular.isString(schema.type)) {
-      return schema.type;
-    }
-
-    // default to object type
-    return 'object';
-  }
 })
 
+/*
+ * Provides configurations for schema form
+ *
+ * Example:
+ * MyApp.config(function(SchemaFormProvider) {
+ *   SchemaFormProvider.setOptions(myOptions);
+ * });
+ *
+ * See options here: https://github.com/jdorn/json-editor#options
+ *
+*/
+.provider('SchemaForm', function() {
+  var options = JSONEditor.defaults.options;
 
-.directive('schemaFormString', function ($compile, templates) {
+  this.$get = function() {
     return {
-        restrict: 'E',
-        replcae: true,
-        require: '?ngModel',
-        scope: {},
-        link: function (){
+      options: options
+    };
+  };
 
-        }
+  this.setOptions = function(newOptions) {
+    if (!angular.isObject(newOptions)) {
+      throw new Error('options should be an object.');
     }
-});
 
-angular.module("mohsen1.schema-form").run(["$templateCache", function($templateCache) {$templateCache.put("templates/string.html","<input type=\"string\">");}]);
+    angular.extend(options, newOptions);
+  };
+
+  this.getOptions = function() {
+    return options;
+  };
+});

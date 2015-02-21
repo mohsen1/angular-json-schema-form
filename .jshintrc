@@ -15,8 +15,10 @@
   "loopfunc": true,
   "sub": true,
   "undef": true,
+  "browser": true,
   "indent": 2,
   "globals": {
-    "angular": true
+    "angular": false,
+    "JSONEditor": false
   }
 }
