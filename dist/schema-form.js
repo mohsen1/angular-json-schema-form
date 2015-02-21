@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.0.7 - 2015-02-21T05:04:11.957Z
+ * Version: 0.0.7 - 2015-02-21T08:39:30.828Z
  * License: MIT
  */
 
@@ -37,15 +37,23 @@ angular.module('mohsen1.schema-form', [])
     scope: {
       'schema': '=schemaForm'
     },
-    link: function(scope, element, attributes/*, ngModel*/) {
+    link: function(scope, element, attributes, ngModel) {
       var formEl = window.document.createElement('div');
       var options = angular.extend(SchemaForm.options, {schema: scope.schema});
-      var jsonEditor = new JSONEditor(formEl, options);
+      var jsonEditor = null;
 
-      element.prepend(formEl);
-      jsonEditor.on('change', function() {
-        window.console.log('change:', arguments);
-      });
+      ngModel.$render = function() {
+        jsonEditor = new JSONEditor(formEl, options);
+        element.prepend(formEl);
+        jsonEditor.setValue(ngModel.$modelValue);
+
+        jsonEditor.on('change', function() {
+          scope.$evalAsync(function()   {
+            ngModel.$setViewValue(jsonEditor.getValue());
+          });
+        });
+      };
+
       scope.$watch(attributes.schemaForm, function() {
         window.console.log(arguments);
       });

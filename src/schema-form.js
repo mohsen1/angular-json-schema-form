@@ -29,15 +29,23 @@ angular.module('mohsen1.schema-form', [])
     scope: {
       'schema': '=schemaForm'
     },
-    link: function(scope, element, attributes/*, ngModel*/) {
+    link: function(scope, element, attributes, ngModel) {
       var formEl = window.document.createElement('div');
       var options = angular.extend(SchemaForm.options, {schema: scope.schema});
-      var jsonEditor = new JSONEditor(formEl, options);
+      var jsonEditor = null;
 
-      element.prepend(formEl);
-      jsonEditor.on('change', function() {
-        window.console.log('change:', arguments);
-      });
+      ngModel.$render = function() {
+        jsonEditor = new JSONEditor(formEl, options);
+        element.prepend(formEl);
+        jsonEditor.setValue(ngModel.$modelValue);
+
+        jsonEditor.on('change', function() {
+          scope.$evalAsync(function()   {
+            ngModel.$setViewValue(jsonEditor.getValue());
+          });
+        });
+      };
+
       scope.$watch(attributes.schemaForm, function() {
         window.console.log(arguments);
       });
