@@ -44,8 +44,11 @@ angular.module('demo')
   };
 
   // ---------------------------------------------------------------------------
+  $scope.advancedSchema = {};
   $http.get('./advanced-schema.json').then(function (resp){
-    $scope.advancedSchema = resp.data;
+    $scope.$evalAsync(function(){
+      $scope.advancedSchema = resp.data;
+    });
   });
   $scope.advancedModel = {};
 })

@@ -6,7 +6,7 @@
       "type": "string",
       "description": "First and Last name",
       "minLength": 4,
-      "default": "Jeremy Dorn"
+      "default": "Homer Simposon"
     },
     "age": {
       "type": "integer",
