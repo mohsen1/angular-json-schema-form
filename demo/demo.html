@@ -24,14 +24,34 @@
 &lt;form schema-form="{type: 'string', title: 'firstName' }" ng-model="simpleString"&gt;
     &lt;button type="submit"&gt;Submit&lt;/button>
 &lt;/form&gt;</pre>
+<!--
         <h4>Results</h4>
         <form schema-form="{type: 'string', title: 'firstName' }" ng-model="simpleString">
             <button type="submit">Submit</button>
         </form>
         <p ng-if="simpleString">simpleString: {{simpleString}}</p>
-        <input ng-model="simpleString">
+        <input ng-model="simpleString"> -->
       </div>
+
+      <div class="usage row live">
+            <div class="col-md-4">
+                <h5>Schema</h5>
+                <textarea  ng-model="complexSchemaString"></textarea>
+                <button ng-click="commit()">Commit</button>
+            </div>
+            <div class="col-md-4">
+                <h5>Model</h5>
+                <textarea  ng-model="complexModelString"></textarea>
+                <button ng-click="commit()">Commit</button>
+            </div>
+            <div class="col-md-4">
+                <h5>Form</h5>
+                <form schema-form="complexSchema" ng-model="complexModel"></form>
+            </div>
+        </div>
     </div>
+
+
 
     <script src="../dist/schema-form.js"></script>
     <script src="demo.js"></script>

@@ -2,4 +2,12 @@
   padding: 10px;
   border: 1px solid rgba(0,0,0,0.09);
   border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+.live.row textarea {
+    width: 100%;
+    min-height: 20em;
+    display: block;
+    font-family: monospace;
 }

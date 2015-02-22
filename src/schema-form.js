@@ -20,7 +20,7 @@ angular.module('mohsen1.schema-form', [])
 /*
  * Main directive
 */
-.directive('schemaForm', function(SchemaForm) {
+.directive('schemaForm', function($parse, SchemaForm) {
 
   return {
     restrict: 'A',
@@ -30,6 +30,11 @@ angular.module('mohsen1.schema-form', [])
       'schema': '=schemaForm'
     },
     link: function(scope, element, attributes, ngModel) {
+      if (!ngModel) {
+        window.console.warn('no ng-model was specified for schemaForm directive');
+        return;
+      }
+
       var formEl = window.document.createElement('div');
       var options = angular.extend(SchemaForm.options, {schema: scope.schema});
       var jsonEditor = null;
@@ -39,10 +44,16 @@ angular.module('mohsen1.schema-form', [])
       ngModel.$render = render;
 
       function render() {
+
+        // clean up previous form
         if (jsonEditor) {
           angular.element(formEl).html('');
           jsonEditor.destroy();
         }
+
+        // renew options.schema if there is a new schema
+        options.schema = scope.schema;
+
         jsonEditor = new JSONEditor(formEl, options);
         jsonEditor.setValue(ngModel.$modelValue);
         jsonEditor.on('change', setViewValue);
@@ -54,7 +65,7 @@ angular.module('mohsen1.schema-form', [])
         });
       }
 
-      scope.$watch(attributes.schemaForm, render);
+      scope.$watch('schema', render);
     }
   };
 })
@@ -71,7 +82,12 @@ angular.module('mohsen1.schema-form', [])
  *
 */
 .provider('SchemaForm', function() {
-  var options = JSONEditor.defaults.options;
+  var options = angular.extend(JSONEditor.defaults.options, {
+    'disable_edit_json': true,
+    'disable_properties': true,
+    'no_additional_properties': true,
+    'disable_collapse': true
+  });
 
   this.$get = function() {
     return {
