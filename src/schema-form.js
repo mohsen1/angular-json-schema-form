@@ -30,8 +30,7 @@ angular.module('mohsen1.schema-form', [])
       'schema': '=schemaForm'
     },
     link: function(scope, element, attributes, ngModel) {
-      if (!ngModel) {
-        window.console.warn('no ng-model was specified for schemaForm directive');
+      if (!ngModel || !angular.isObject(scope.schema)) {
         return;
       }
 

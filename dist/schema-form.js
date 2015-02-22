@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.0.7 - 2015-02-22T02:50:46.280Z
+ * Version: 0.0.7 - 2015-02-22T03:23:15.909Z
  * License: MIT
  */
 
@@ -38,8 +38,7 @@ angular.module('mohsen1.schema-form', [])
       'schema': '=schemaForm'
     },
     link: function(scope, element, attributes, ngModel) {
-      if (!ngModel) {
-        window.console.warn('no ng-model was specified for schemaForm directive');
+      if (!ngModel || !angular.isObject(scope.schema)) {
         return;
       }
 

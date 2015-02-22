@@ -4,9 +4,10 @@ angular.module('demo', ['ngSanitize', 'mohsen1.schema-form']);
 
 angular.module('demo')
 
-.controller('TestCtrl', function ($scope) {
+.controller('TestCtrl', function ($scope, $http) {
   $scope.simpleString = 'Hello world';
 
+  // ---------------------------------------------------------------------------
   $scope.complexSchema = {
     type: 'object',
     title: 'Person',
@@ -41,6 +42,12 @@ angular.module('demo')
       window.console.warn(e.toString());
     }
   };
+
+  // ---------------------------------------------------------------------------
+  $http.get('./advanced-schema.json').then(function (resp){
+    $scope.advancedSchema = resp.data;
+  });
+  $scope.advancedModel = {};
 })
 
 .config(function(SchemaFormProvider) {

@@ -5,7 +5,7 @@
   margin-bottom: 1em;
 }
 
-.live.row textarea {
+.live textarea {
     width: 100%;
     min-height: 20em;
     display: block;
