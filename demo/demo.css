@@ -11,3 +11,14 @@
     display: block;
     font-family: monospace;
 }
+
+header {
+    overflow: hidden;
+}
+header h1 {
+    float: left;
+}
+.star-fork {
+    float: right;
+    padding: 1em;
+}
