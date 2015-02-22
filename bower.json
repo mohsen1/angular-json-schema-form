@@ -5,7 +5,7 @@
     "Mohsen Azimi <me@azimi.me>"
   ],
   "description": "",
-  "main": "dist/schema-form.js, dist/schema-form.js",
+  "main": "dist/schema-form.js",
   "license": "MIT",
   "private": false,
   "ignore": [
