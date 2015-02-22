@@ -4,7 +4,7 @@
 
 This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) internally to generate forms.
 
-## [Live demo](http://azimi.me/angular-json-schema-form/demo/demo.html)
+### [Live demo](http://azimi.me/angular-json-schema-form/demo/demo.html)
 
 ## How to use
 
