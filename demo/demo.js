@@ -15,15 +15,16 @@ angular.module('demo')
         name: {
             type: 'string'
         },
-        age: {
-            type: 'integer'
+        location: {
+            type: 'string',
+            minLength: 3
         }
     }
   };
 
   $scope.complexModel = {
     name: 'Mohsen',
-    age: 28
+    location: 'Palo Alto, CA'
   };
 
   $scope.$watch('complexModel', function(){

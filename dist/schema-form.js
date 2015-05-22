@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.0.1 - 2015-05-22T20:49:07.354Z
+ * Version: 0.0.2 - 2015-05-22T21:26:40.664Z
  * License: MIT
  */
 
@@ -69,13 +69,17 @@ angular.module('mohsen1.schema-form', [])
 
         if (ngModel) {
           jsonEditor.setValue(ngModel.$modelValue);
-          jsonEditor.on('change', setViewValue);
+          jsonEditor.on('change', setViewValueAndErrors);
         }
+
       }
 
-      function setViewValue() {
+      function setViewValueAndErrors() {
         scope.$evalAsync(function() {
+          var errors = jsonEditor.validate();
+
           ngModel.$setViewValue(jsonEditor.getValue());
+          ngModel.$setValidity('schemaForm', errors.length === 0);
         });
       }
 
