@@ -61,13 +61,17 @@ angular.module('mohsen1.schema-form', [])
 
         if (ngModel) {
           jsonEditor.setValue(ngModel.$modelValue);
-          jsonEditor.on('change', setViewValue);
+          jsonEditor.on('change', setViewValueAndErrors);
         }
+
       }
 
-      function setViewValue() {
+      function setViewValueAndErrors() {
         scope.$evalAsync(function() {
+          var errors = jsonEditor.validate();
+
           ngModel.$setViewValue(jsonEditor.getValue());
+          ngModel.$setValidity('schemaForm', errors.length === 0);
         });
       }
 
