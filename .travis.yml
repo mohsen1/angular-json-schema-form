@@ -7,5 +7,3 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install -g gulp bower jshint jscs
   - bower install
-  - jshint .
-  - jscs .
