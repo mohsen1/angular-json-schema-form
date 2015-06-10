@@ -4,7 +4,15 @@ angular.module('demo', ['ngSanitize', 'mohsen1.schema-form']);
 
 angular.module('demo')
 
-.controller('TestCtrl', function ($scope, $http) {
+.controller('TestCtrl', function ($scope, $http, SchemaForm) {
+
+  // Configure SchemaForm
+  SchemaForm.options = {
+    theme: 'bootstrap3',
+    // remove_empty_properties: true,
+    show_errors: 'change'
+  };
+
   $scope.simpleString = 'Hello world';
 
   // ---------------------------------------------------------------------------

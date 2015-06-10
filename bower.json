@@ -23,6 +23,6 @@
     "bootstrap": "~3.3.2"
   },
   "dependencies": {
-    "json-editor": "~0.7.15"
+    "json-editor": "~0.7.2"
   }
 }
