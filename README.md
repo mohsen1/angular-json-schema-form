@@ -1,5 +1,7 @@
 # Angular JSON Schema Form
 
+[![Build Status](https://travis-ci.org/mohsen1/angular-json-schema-form.svg?branch=master)](https://travis-ci.org/mohsen1/angular-json-schema-form)
+
 > Angular directive for making forms out of JSON Schema
 
 This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) internally to generate forms.
@@ -9,7 +11,7 @@ This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) intern
 ## How to use
 
 * Install via bower
-  
+
   ```
     bower install --save-dev schema-form
   ```
@@ -27,7 +29,7 @@ This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) intern
   ```
 
   You can also use `ng-model` with this directive.
-  
+
   Note that `schema-form` will **`prepend`** generated form elements.
 
 ## Development
