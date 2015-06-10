@@ -6,17 +6,6 @@ describe('schema-form', function() {
   var $rootScope;
   var element;
 
-  function createDirective(template) {
-    var elm;
-
-    elm = angular.element(template);
-    angular.element(window.document.body).prepend(elm);
-    $compile(elm)(scope);
-    scope.$digest();
-
-    return elm;
-  }
-
   beforeEach(module('ngSanitize', 'mohsen1.schema-form'));
   beforeEach(inject(function(_$rootScope_, _$compile_) {
     $rootScope = _$rootScope_;
@@ -30,23 +19,21 @@ describe('schema-form', function() {
     }
   });
 
-  describe('as an element', function() {
-    runTestsWithTemplate('<schema-form></schema-form>');
-  });
+  describe('simple string schema', function() {
 
-  describe('as an attribute', function() {
-    runTestsWithTemplate('<div schema-form></div>');
-  });
+    it('should have the title and initial value', function() {
+      var template = '<div schema-form="schema" ng-model="simpleString"></div>';
+      element = angular.element(template);
 
-  function runTestsWithTemplate(template) {
-    describe('when created', function() {
+      scope.schema = {type: 'string', title: 'First Name'};
+      scope.simpleString = 'Hello world';
 
-      it('should initial the value to 0', function() {
-        element = createDirective(template);
+      angular.element(window.document.body).prepend(element);
+      $compile(element)(scope);
+      scope.$digest();
 
-        expect(element.text()).toContain('0');
-      });
+      expect(element.text()).toContain('First Name');
+      expect(element.find('input').val()).toContain('Hello world');
     });
-  }
-
+  });
 });
