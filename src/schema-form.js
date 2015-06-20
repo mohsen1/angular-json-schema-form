@@ -24,7 +24,7 @@ angular.module('mohsen1.schema-form', [])
 
   return {
     restrict: 'A',
-    replcae: false,
+    replace: false,
     require: '?ngModel',
     scope: {
       'schema': '=schemaForm'

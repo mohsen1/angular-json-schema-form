@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.1.0 - 2015-06-10T18:55:17.661Z
+ * Version: 0.1.1 - 2015-06-20T19:01:46.246Z
  * License: MIT
  */
 
@@ -32,7 +32,7 @@ angular.module('mohsen1.schema-form', [])
 
   return {
     restrict: 'A',
-    replcae: false,
+    replace: false,
     require: '?ngModel',
     scope: {
       'schema': '=schemaForm'
