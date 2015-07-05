@@ -23,6 +23,9 @@
     "bootstrap": "~3.3.2"
   },
   "dependencies": {
-    "json-editor": "~0.7.2"
+    "json-editor": "~0.7.2",
+    "angular": "~1.4.1",
+    "angular-mocks": "~1.4.1",
+    "angular-sanitize": "~1.4.1"
   }
 }
