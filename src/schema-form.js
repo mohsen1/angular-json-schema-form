@@ -46,6 +46,15 @@ angular.module('mohsen1.schema-form', [])
         render();
       }
 
+      // Listen to keyup on wrapper element to trigger per keypress changes
+      if (element && element[0] instanceof HTMLElement) {
+        element[0].addEventListener('keyup', function(event) {
+          event.target.blur();
+          event.target.focus();
+          setViewValueAndErrors();
+        }, true);
+      }
+
       function render() {
 
         // clean up previous form
