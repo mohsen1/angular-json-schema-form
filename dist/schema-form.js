@@ -1,7 +1,7 @@
 /*!
  * angular-json-schema-form
  * https://github.com/mohsen1/angular-json-schema-form
- * Version: 0.1.1 - 2015-06-20T19:01:46.246Z
+ * Version: 0.1.1 - 2015-07-05T01:23:57.909Z
  * License: MIT
  */
 
@@ -52,6 +52,15 @@ angular.module('mohsen1.schema-form', [])
         ngModel.$render = render;
       } else {
         render();
+      }
+
+      // Listen to keyup on wrapper element to trigger per keypress changes
+      if (element && element[0] instanceof HTMLElement) {
+        element[0].addEventListener('keyup', function(event) {
+          event.target.blur();
+          event.target.focus();
+          setViewValueAndErrors();
+        }, true);
       }
 
       function render() {
