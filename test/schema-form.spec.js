@@ -6,7 +6,7 @@ describe('schema-form', function() {
   var $rootScope;
   var element;
 
-  beforeEach(module('ngSanitize', 'mohsen1.schema-form'));
+  beforeEach(module('mohsen1.schema-form'));
   beforeEach(inject(function(_$rootScope_, _$compile_) {
     $rootScope = _$rootScope_;
     scope = $rootScope.$new();
