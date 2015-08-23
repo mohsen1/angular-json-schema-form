@@ -22,7 +22,7 @@ This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) intern
   ```
 * Pass your JSON Schema to `json-schema-form` attribute directive on `<form>` element
 
-  ```
+  ```html
     <form schema-form="{type: 'string'}" action="/" method="post">
       <button type="submit">Send</button>
     </form>
