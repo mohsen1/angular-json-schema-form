@@ -35,7 +35,7 @@ angular.module('mohsen1.schema-form', [])
       }
 
       var formEl = window.document.createElement('div');
-      var options = angular.extend(SchemaForm.options, {schema: scope.schema});
+      var options = angular.extend({}, SchemaForm.options, {schema: scope.schema});
       var jsonEditor = null;
 
       element.prepend(formEl);
