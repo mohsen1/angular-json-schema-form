@@ -1,6 +1,6 @@
 {
   "name": "schema-form",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "authors": [
     "Mohsen Azimi <me@azimi.me>"
   ],
@@ -16,12 +16,12 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "~2.1.1",
-    "bootstrap": "~3.3.2",
-    "angular-mocks": "~1.4.2"
+    "jquery": "^2.x",
+    "bootstrap": "^3.x",
+    "angular-mocks": "^1.x"
   },
   "dependencies": {
-    "json-editor": "~0.7.2",
-    "angular": "~1.4.1"
+    "json-editor": "^0.x",
+    "angular": "^1.x"
   }
 }
