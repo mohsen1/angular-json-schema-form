@@ -10,7 +10,7 @@ This directive is using [JSON Editor](http://jeremydorn.com/json-editor/) intern
 
 ## How to use
 
-* Install via bower
+* Install via Bower
 
   ```
     bower install --save-dev schema-form
