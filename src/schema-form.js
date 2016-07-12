@@ -20,7 +20,7 @@ angular.module('mohsen1.schema-form', [])
 /*
  * Main directive
 */
-.directive('schemaForm', function($parse, SchemaForm) {
+.directive('schemaForm', ['$parse', 'SchemaForm', function($parse, SchemaForm) {
 
   return {
     restrict: 'A',
@@ -87,7 +87,7 @@ angular.module('mohsen1.schema-form', [])
       scope.$watch('schema', render);
     }
   };
-})
+}])
 
 /*
  * Provides configurations for schema form
